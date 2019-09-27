@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 743387009
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ricardo
+    uniqueID: 585453785
+    locked: 0
+  - name: Phones
+    uniqueID: 3093412209
     locked: 0

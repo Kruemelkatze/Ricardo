@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    private Transform CameraTransform;
+    public  Transform CameraTransform;
     private Transform[] Layers;
     private int LeftIndex;
     private int RightIndex;
@@ -32,7 +32,7 @@ public class Parallax : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CameraTransform = Camera.main.transform;
+        CameraTransform = CameraTransform ?? Camera.main.transform;
         LastCameraPos = CameraTransform.position;
         OffsetToCam = CameraTransform.position - transform.position;
 
