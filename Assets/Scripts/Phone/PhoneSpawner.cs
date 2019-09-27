@@ -121,7 +121,7 @@ public class PhoneSpawner : MonoBehaviour
 
         if (useColors)
         {
-            var color = colors[Random.Range(0, phones.Count - 1)];
+            var color = colors[Random.Range(0, colors.Length)];
             phoneScript.SetColor(color);
         }
 

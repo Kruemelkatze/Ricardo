@@ -1160,10 +1160,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phonePrefab: {fileID: 3005424197679651962, guid: 439950600360cf74e9a55fc397bbbcc2,
     type: 3}
-  useColors: 0
+  useColors: 1
   colors:
-  - {r: 255, g: 0, b: 0, a: 1}
-  - {r: 255, g: 255, b: 255, a: 1}
+  - {r: 340.44495, g: 340.44495, b: 340.44495, a: 1}
+  - {r: 340.44495, g: 340.44495, b: 340.44495, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
   averageSpawnTime: 5
   spawnTimeDeviation: 0.5
   maxPhones: 10
