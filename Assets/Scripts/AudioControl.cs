@@ -1,7 +1,5 @@
-﻿﻿using System.Collections;
-using System.Collections.Generic;
-using EazyTools.SoundManager;
-using UnityEngine;
+﻿ using Hellmade.Sound;
+ using UnityEngine;
  
 public class AudioControl : MonoBehaviour
 {
@@ -33,27 +31,27 @@ public class AudioControl : MonoBehaviour
     // Simple functions for demo usage with button OnClick()
     public void PlayDefaultMusic()
     {
-        PlayDefaultMusic(SoundManager.globalMusicVolume);
+        PlayDefaultMusic(EazySoundManager.GlobalMusicVolume);
     }
  
     public void PlayMusic(string key)
     {
-        PlayMusic(key, SoundManager.globalMusicVolume);
+        PlayMusic(key, EazySoundManager.GlobalMusicVolume);
     }
  
     public void PlaySound(string key)
     {
-        PlaySound(key, SoundManager.globalSoundsVolume);
+        PlaySound(key, EazySoundManager.GlobalSoundsVolume);
     }
  
     public void PlayMusic(AudioClip clip)
     {
-        PlayMusic(clip, SoundManager.globalMusicVolume);
+        PlayMusic(clip, EazySoundManager.GlobalMusicVolume);
     }
  
     public void PlaySound(AudioClip clip)
     {
-        PlaySound(clip, SoundManager.globalSoundsVolume);
+        PlaySound(clip, EazySoundManager.GlobalSoundsVolume);
     }
  
     // Default theme helper
@@ -82,7 +80,7 @@ public class AudioControl : MonoBehaviour
  
     public int PlayMusic(AudioClip clip, float volume = 0, bool loop = true, bool persist = true)
     {
-        return SoundManager.PlayMusic(clip, volume, loop, persist);
+        return EazySoundManager.PlayMusic(clip, volume, loop, persist);
     }
  
     public int PlaySound(string key, float volume = 0, Transform sourceTransform = null)
@@ -99,6 +97,6 @@ public class AudioControl : MonoBehaviour
  
     public int PlaySound(AudioClip clip, float volume = 0, Transform sourceTransform = null)
     {
-        return SoundManager.PlaySound(clip, volume, false, sourceTransform);
+        return EazySoundManager.PlaySound(clip, volume, false, sourceTransform);
     }
 }
