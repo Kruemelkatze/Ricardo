@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Screen : MonoBehaviour
 {
+    public string sortingLayerName = "Default";
+    public int orderInLayer;
+    
     public Camera AssignedCamera;
     private Renderer _renderer;
     private Vector2 _camSize;
@@ -26,6 +30,9 @@ public class Screen : MonoBehaviour
         var textureWidth = quadSize.x / camWidth;
         var textureHeight = quadSize.y / camHeight;
         _renderer.material.mainTextureScale = new Vector2(textureWidth, textureHeight);
+
+        _renderer.sortingLayerName = sortingLayerName;
+        _renderer.sortingOrder = orderInLayer;
     }
 
     // Update is called once per frame
