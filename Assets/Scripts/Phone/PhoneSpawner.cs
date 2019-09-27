@@ -24,6 +24,7 @@ public class PhoneSpawner : MonoBehaviour
     public Vector2 minSpawnDistance = new Vector2(2, 3);
     public float minSpawnDistanceBorder = 3;
     public int triesForRandomPoint = 20;
+    public bool randomZ;
 
     public List<Phone> phones = new List<Phone>();
 
@@ -80,13 +81,20 @@ public class PhoneSpawner : MonoBehaviour
         {
             point = RandomPointInBounds(min, max);
 
-            if (phones.All(phone => Math.Abs(point.x - phone.transform.position.x) >= minSpawnDistance.x ||
-                                    Math.Abs(point.y - phone.transform.position.y) >= minSpawnDistance.y))
+            if (phones.All(phone =>
+            {
+                var xComp = phone.isHorizontal ? minSpawnDistance.y : minSpawnDistance.x;
+                var yComp = phone.isHorizontal ? minSpawnDistance.x : minSpawnDistance.y;
+
+                return Math.Abs(point.x - phone.transform.position.x) >= xComp ||
+                       Math.Abs(point.y - phone.transform.position.y) >= yComp;
+            }))
             {
                 //Spawn!
                 return point;
             }
         }
+
         Debug.Log("Could find valid spawn point. Falling back to " + point);
         return point;
     }
@@ -103,8 +111,8 @@ public class PhoneSpawner : MonoBehaviour
     public void SpawnPhone()
     {
         var point = GetSpawnPoint();
-        var phone = Instantiate(phonePrefab, new Vector3(0, 0, Random.Range(-0.05f, 0)) + point, Quaternion.identity,
-            transform);
+        point.z = randomZ ? Random.Range(-0.05f, 0) : 0;
+        var phone = Instantiate(phonePrefab, point, Quaternion.identity, transform);
 
         var phoneScript = phone.GetComponent<Phone>();
         phones.Add(phoneScript);
@@ -123,7 +131,7 @@ public class PhoneSpawner : MonoBehaviour
 
     public void RemoveAllPhones()
     {
-        phones.ForEach(phone => GameObject.Destroy(phone.gameObject));
+        phones.ForEach(phone => phone.Despawn());
         phones.Clear();
     }
 }

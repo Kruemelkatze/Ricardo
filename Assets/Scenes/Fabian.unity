@@ -1138,6 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289847227}
   - component: {fileID: 1289847226}
+  - component: {fileID: 1289847228}
   m_Layer: 8
   m_Name: PhoneSpawner
   m_TagString: Untagged
@@ -1166,9 +1167,10 @@ MonoBehaviour:
   averageSpawnTime: 5
   spawnTimeDeviation: 0.5
   maxPhones: 10
-  minSpawnDistance: 2
+  minSpawnDistance: {x: 2, y: 3}
   minSpawnDistanceBorder: 2
   triesForRandomPoint: 20
+  randomZ: 1
   phones: []
 --- !u!4 &1289847227
 Transform:
@@ -1184,6 +1186,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289847228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289847225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0de7cee1edb114b8f332c2344e6292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraTransform: {fileID: 0}
+  ViewZone: 10
+  BackgroundSize: 0
+  MoveY: 1
+  Scroll: 0
+  ParallaxFactor: 0
 --- !u!1 &1792255334
 GameObject:
   m_ObjectHideFlags: 0
