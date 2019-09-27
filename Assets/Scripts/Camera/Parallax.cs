@@ -32,7 +32,7 @@ public class Parallax : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CameraTransform = CameraTransform ?? Camera.main.transform;
+        CameraTransform = CameraTransform != null ? CameraTransform : Camera.main.transform;
         LastCameraPos = CameraTransform.position;
         OffsetToCam = CameraTransform.position - transform.position;
 
