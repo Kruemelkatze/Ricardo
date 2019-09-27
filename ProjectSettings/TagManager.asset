@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - player
+  - 
   - 
   - 
   - 
@@ -38,15 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 743387009
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: back
-    uniqueID: 1256976015
+  - name: Ricardo
+    uniqueID: 585453785
     locked: 0
-  - name: front
-    uniqueID: 1876872499
-    locked: 0
-  - name: New Layer
-    uniqueID: 1854797027
+  - name: Phones
+    uniqueID: 3093412209
     locked: 0
