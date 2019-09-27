@@ -6,6 +6,7 @@ public class CharacterController2D : MonoBehaviour
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
+	[SerializeField] private int m_MaxJumpCount = 1;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
@@ -17,6 +18,8 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
+	private int jumpCount = 0;
+	private bool doResetJump = false;
 
 	private void Awake()
 	{
@@ -34,7 +37,10 @@ public class CharacterController2D : MonoBehaviour
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
+			{
 				m_Grounded = true;
+				jumpCount = 0;
+			}
 		}
 	}
 
@@ -88,14 +94,27 @@ public class CharacterController2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
+			
 		}
+	
 		// If the player should jump...
-		if (m_Grounded && jump)
+//		if (m_Grounded && jump)
+		if (jump && jumpCount < (m_MaxJumpCount-1))
 		{
+			if (!m_Grounded)
+			{
+				m_Rigidbody2D.velocity = Vector2.zero;
+				m_Rigidbody2D.angularVelocity = 0;	
+			}
+			
 			// Add a vertical force to the player.
 			m_Grounded = false;
+			jumpCount++;
+			
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
+		
+
 	}
 
 
