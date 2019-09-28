@@ -8,6 +8,9 @@ public class PhoneSpawnerEditor : Editor
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
+        
+        if (!Application.isPlaying)
+            return;
 
         PhoneSpawner myScript = (PhoneSpawner) target;
         if (GUILayout.Button("Spawn Phone"))

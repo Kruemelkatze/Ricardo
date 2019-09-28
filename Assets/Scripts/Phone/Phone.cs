@@ -120,7 +120,6 @@ public class Phone : MonoBehaviour
             
             indicator.color = color;
             
-            Debug.Log(waitTime);
             yield return new WaitForSeconds(waitTime);
 
             if (photoShot)
@@ -139,6 +138,17 @@ public class Phone : MonoBehaviour
         photoShot = true;
 
         flash.Play();
+
+        var textureSnapShot = _screen.CreateSnapshot();
+        var gm = Hub.Get<GameManager>();
+
+        var playerOnScreen = IsPlayerOnScreen();
+        gm.TookPhoto(textureSnapShot, playerOnScreen);
+    }
+
+    private bool IsPlayerOnScreen()
+    {
+        return true;
     }
 
     Rect GetCameraBounds()

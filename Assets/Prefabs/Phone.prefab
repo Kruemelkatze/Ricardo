@@ -585,7 +585,7 @@ MonoBehaviour:
   indicator: {fileID: 1565971972}
   flash: {fileID: 1647148472}
   targetPosition: {x: 0, y: 0, z: 0}
-  timeToPhoto: 10
+  timeToPhoto: 5
   timeToPhotoLeft: 10
   photoShot: 0
   isHorizontal: 0

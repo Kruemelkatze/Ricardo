@@ -9,12 +9,15 @@ public class PhoneEditor : Editor
     {
         DrawDefaultInspector();
 
+        if (!Application.isPlaying)
+            return;
+
         Phone myScript = (Phone) target;
         if (GUILayout.Button("Reset Photo"))
         {
             myScript.ResetPhoto();
         }
-        
+
         if (GUILayout.Button("Shoot Photo"))
         {
             myScript.ShootPhoto();
