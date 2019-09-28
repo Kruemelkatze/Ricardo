@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: db483a781436823458406c1d935c0711
   - enabled: 1
-    path: Assets/Scenes/Fabian.unity
-    guid: 4cab8d2e9a6d03c4994b0707cf8f083b
+    path: Assets/Scenes/MainGame.unity
+    guid: 3e7ade807cc17f445bafc195c353179d
   - enabled: 1
     path: Assets/Scenes/HighscoreScreen.unity
     guid: fb86e5bf006f04640901da257f4c8d09
