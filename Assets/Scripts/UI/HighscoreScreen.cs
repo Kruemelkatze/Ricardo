@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,12 +10,19 @@ public class HighscoreScreen : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        StartCoroutine(LoadDeferred(1));
     }
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        StartCoroutine(LoadDeferred(0));
+    }
+
+    IEnumerator LoadDeferred(int scene)
+    {
+        AudioControl.Instance.PlayRandomSound("towel");
+        yield return new WaitForSeconds(0.8f);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     private void Start()
@@ -27,7 +35,7 @@ public class HighscoreScreen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            StartCoroutine(LoadDeferred(0));
         }
     }
 }

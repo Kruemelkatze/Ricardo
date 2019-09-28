@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,8 +7,7 @@ public class StartScreen : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
-        AudioControl.Instance.PlayRandomSound("towel");
+        StartCoroutine(LoadDeferred(1));
     }
     
     public void ExitGame()
@@ -21,5 +21,12 @@ public class StartScreen : MonoBehaviour
         {
             ExitGame();
         }
+    }
+    
+    IEnumerator LoadDeferred(int scene)
+    {
+        AudioControl.Instance.PlayRandomSound("towel");
+        yield return new WaitForSeconds(0.8f);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }

@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             SceneManager.LoadScene(0, LoadSceneMode.Single);
+            AudioControl.Instance.PlayRandomSound("towel");
         }
     }
 
