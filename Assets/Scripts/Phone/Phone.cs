@@ -12,6 +12,8 @@ public class Phone : MonoBehaviour
     public SpriteRenderer indicator;
     public Animation flash;
 
+    private Collider2D _ricardoTrigger;
+
     public Vector3 targetPosition;
     private Vector3 velocity = Vector3.zero;
     public const float smoothTime = 0.3F;
@@ -20,7 +22,8 @@ public class Phone : MonoBehaviour
     public float timeToPhoto = 5;
     public float timeToPhotoLeft = 5;
     public bool photoShot = false;
-    
+
+    public float DespawnTime = 3;
     
     private Screen _screen;
 
@@ -28,9 +31,12 @@ public class Phone : MonoBehaviour
 
     public float blinkTimer;
     public float flashTime = 0.2f;
+
+    public bool ricardoInPhoto;
     
     void Start()
     {
+        _ricardoTrigger = GetComponent<Collider2D>();
         _screen = GetComponentInChildren<Screen>();
         
         var camBounds = GetCameraBounds();
@@ -96,6 +102,24 @@ public class Phone : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("PhotoTrigger"))
+        {
+            return;
+        }
+        ricardoInPhoto = true;
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("PhotoTrigger"))
+        {
+            return;
+        }
+        ricardoInPhoto = false;
+    }
+
     IEnumerator ToggleIndicator()
     {
         while (!photoShot)
@@ -141,14 +165,13 @@ public class Phone : MonoBehaviour
 
         var textureSnapShot = _screen.CreateSnapshot();
         var gm = Hub.Get<GameManager>();
+        
+        var camBounds = GetCameraBounds();
+        var diffTop = Math.Abs(camBounds.y + camBounds.height - transform.position.y);
+        var relativeHeight = 1 - (diffTop / camBounds.height);
+        Debug.Log(relativeHeight);
 
-        var playerOnScreen = IsPlayerOnScreen();
-        gm.TookPhoto(textureSnapShot, playerOnScreen);
-    }
-
-    private bool IsPlayerOnScreen()
-    {
-        return true;
+        gm.TookPhoto(this, textureSnapShot, ricardoInPhoto, relativeHeight);
     }
 
     Rect GetCameraBounds()
@@ -174,6 +197,12 @@ public class Phone : MonoBehaviour
 
     public void Despawn()
     {
+        StartCoroutine(DespawnCoroutine());
+    }
+
+    IEnumerator DespawnCoroutine()
+    {
+        yield return new WaitForSeconds(DespawnTime);
         targetPosition = targetPosition - (transform.rotation * Vector3.up * 1.5f *StartOffset);
         Destroy(gameObject, smoothTime + 0.01f);
     }

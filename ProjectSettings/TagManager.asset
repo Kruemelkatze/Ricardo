@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Back
   - Front
+  - PhotoTrigger
   layers:
   - Default
   - TransparentFX

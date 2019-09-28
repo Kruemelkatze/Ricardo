@@ -19,12 +19,20 @@ public class GameManager : MonoBehaviour
 		
 	}
 
-	public void TookPhoto(Texture2D photo, bool isOnPhoto)
+	public void TookPhoto(Phone phone, Texture2D photo, bool isOnPhoto, float relativeHeight)
 	{
 		if (isOnPhoto)
 		{
 			bombedPhotos.Add(photo);
-			score += scorePerBombedPhoto;
+			var addScore = scorePerBombedPhoto * (1 + relativeHeight / 2);
+
+			var isDoedel = Hub.Get<PlayerMovement>().IsDoedel();
+
+			addScore += isDoedel ? 2 : 1;
+			
+			score += (int) addScore;
 		}
+		
+		Hub.Get<PhoneSpawner>().RemovePhone(phone);
 	}
 }

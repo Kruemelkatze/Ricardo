@@ -31,6 +31,7 @@ public class PhoneSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Hub.Register(this);
     }
 
     // Update is called once per frame
@@ -134,5 +135,11 @@ public class PhoneSpawner : MonoBehaviour
     {
         phones.ForEach(phone => phone.Despawn());
         phones.Clear();
+    }
+
+    public void RemovePhone(Phone phone)
+    {
+        phones.Remove(phone);
+        phone.Despawn();
     }
 }

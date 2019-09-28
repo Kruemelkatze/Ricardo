@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start()
 	{
 		anim = GetComponent<Animator>();
+		Hub.Register(this);
 	}
 	
 	// Update is called once per frame
@@ -65,5 +66,10 @@ public class PlayerMovement : MonoBehaviour {
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
+	}
+
+	public bool IsDoedel()
+	{
+		return anim.GetBool("isDoedel");
 	}
 }

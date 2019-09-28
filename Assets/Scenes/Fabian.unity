@@ -126,6 +126,59 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8558300939210683780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &523638308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523638309}
+  - component: {fileID: 523638310}
+  m_Layer: 9
+  m_Name: PhotoTrigger
+  m_TagString: PhotoTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523638309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523638308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2025785574}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &523638310
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523638308}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07, y: 1.97}
+  m_Size: {x: 2.65, y: 4.02}
+  m_Direction: 0
+--- !u!4 &2025785574 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 824231618243695566, guid: e898d70420d1b8d47a85aa4f5312d003,
+    type: 3}
+  m_PrefabInstance: {fileID: 2115895126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2115895126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -437,24 +490,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2035511134241804147, guid: d88d705abb6ab2141923ef7f07d7d225,
-        type: 3}
-      propertyPath: variants.Array.data[0].phone
-      value: 
-      objectReference: {fileID: 21300000, guid: f2d9fae85df5dcd4da48d5113505cd34,
-        type: 3}
-    - target: {fileID: 2035511134241804147, guid: d88d705abb6ab2141923ef7f07d7d225,
-        type: 3}
-      propertyPath: variants.Array.data[1].phone
-      value: 
-      objectReference: {fileID: 21300000, guid: b33bb098ad25c64499d7848b143c09ac,
-        type: 3}
-    - target: {fileID: 2035511134241804147, guid: d88d705abb6ab2141923ef7f07d7d225,
-        type: 3}
-      propertyPath: variants.Array.data[2].phone
-      value: 
-      objectReference: {fileID: 21300000, guid: 560271aff8916bb4896198d01db1b24a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88d705abb6ab2141923ef7f07d7d225, type: 3}
 --- !u!1001 &5273343210563794783
@@ -605,6 +640,10 @@ PrefabInstance:
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 370647076}
+    - target: {fileID: 630151816, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 630151815, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
       propertyPath: CameraTransform
       value: 
