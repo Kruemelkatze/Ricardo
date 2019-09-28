@@ -20,7 +20,7 @@ public class CharacterController2D : MonoBehaviour
 	private Vector3 velocity = Vector3.zero;
 	private int jumpCount = 0;
 	private bool doResetJump = false;
-
+	
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
