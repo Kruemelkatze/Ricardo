@@ -7,6 +7,7 @@ public class StartScreen : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+        AudioControl.Instance.PlayRandomSound("towel");
     }
     
     public void ExitGame()
