@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         timeleft = totalTime;
         gameOver = false;
 
-        //AudioControl.Instance.PlayDefaultMusic(0.3f);
+        AudioControl.Instance.PlayDefaultMusic(0.3f);
     }
 
     // Update is called once per frame
