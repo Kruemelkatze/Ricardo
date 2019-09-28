@@ -13,9 +13,9 @@ public class PhoneSpawner : MonoBehaviour
 {
     public GameObject phonePrefab;
 
-    public bool useColors = false;
-    public Color[] colors = new Color[] {Color.white, Color.red, Color.yellow};
-
+    public bool useVariants = false;
+    public PhoneVariant[] variants;
+    
     public float averageSpawnTime = 5;
     public float spawnTimeDeviation = 0.5f;
 
@@ -119,11 +119,12 @@ public class PhoneSpawner : MonoBehaviour
 
         phoneScript.targetPosition = point;
 
-        if (useColors)
+        if (useVariants)
         {
-            var color = colors[Random.Range(0, colors.Length)];
-            phoneScript.SetColor(color);
+            var variant = variants[Random.Range(0, variants.Length)];
+            phoneScript.SetVariant(variant);
         }
+
 
         Debug.Log("Spawned phone at position " + point);
         //Other stuff to do with phones
