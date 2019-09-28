@@ -24,7 +24,7 @@ public class Phone : MonoBehaviour
     public bool photoShot = false;
 
     public float DespawnTime = 3;
-    
+
     private Screen _screen;
 
     public bool isHorizontal;
@@ -33,12 +33,13 @@ public class Phone : MonoBehaviour
     public float flashTime = 0.2f;
 
     public bool ricardoInPhoto;
-    
+    public bool doedelInPhoto;
+
     void Start()
     {
         _ricardoTrigger = GetComponent<Collider2D>();
         _screen = GetComponentInChildren<Screen>();
-        
+
         var camBounds = GetCameraBounds();
         // Get nearest edge of targetPosition
         var diffTop = Math.Abs(camBounds.y + camBounds.height - targetPosition.y);
@@ -77,9 +78,9 @@ public class Phone : MonoBehaviour
             _screen.transform.localScale = FlipV3(_screen.transform.localScale);
             isHorizontal = true;
         }
-        
+
         transform.Translate(Vector3.down * StartOffset);
-        
+
         timeToPhotoLeft = timeToPhoto;
         StartCoroutine(ToggleIndicator());
     }
@@ -104,20 +105,26 @@ public class Phone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("PhotoTrigger"))
+        if (other.CompareTag("PhotoTrigger"))
         {
-            return;
+            ricardoInPhoto = true;
         }
-        ricardoInPhoto = true;
+        else if (other.CompareTag("DoedelTrigger"))
+        {
+            doedelInPhoto = true;
+        }
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("PhotoTrigger"))
+        if (other.CompareTag("PhotoTrigger"))
         {
-            return;
+            ricardoInPhoto = false;
         }
-        ricardoInPhoto = false;
+        else if (other.CompareTag("DoedelTrigger"))
+        {
+            doedelInPhoto = false;
+        }
     }
 
     IEnumerator ToggleIndicator()
@@ -125,7 +132,7 @@ public class Phone : MonoBehaviour
         while (!photoShot)
         {
             var color = indicator.color;
-            
+
             color.a = 255;
             indicator.color = color;
             yield return new WaitForSeconds(blinkTimer);
@@ -141,9 +148,9 @@ public class Phone : MonoBehaviour
             {
                 color.a = 0;
             }
-            
+
             indicator.color = color;
-            
+
             yield return new WaitForSeconds(waitTime);
 
             if (photoShot)
@@ -152,7 +159,7 @@ public class Phone : MonoBehaviour
                 indicator.color = color;
             }
         }
-        
+
         Debug.Log("Stopped toggling indicator");
     }
 
@@ -165,13 +172,13 @@ public class Phone : MonoBehaviour
 
         var textureSnapShot = _screen.CreateSnapshot();
         var gm = Hub.Get<GameManager>();
-        
+
         var camBounds = GetCameraBounds();
         var diffTop = Math.Abs(camBounds.y + camBounds.height - transform.position.y);
         var relativeHeight = 1 - (diffTop / camBounds.height);
         Debug.Log(relativeHeight);
 
-        gm.TookPhoto(this, textureSnapShot, ricardoInPhoto, relativeHeight);
+        gm.TookPhoto(this, textureSnapShot, ricardoInPhoto, doedelInPhoto, relativeHeight);
     }
 
     Rect GetCameraBounds()
@@ -203,7 +210,7 @@ public class Phone : MonoBehaviour
     IEnumerator DespawnCoroutine()
     {
         yield return new WaitForSeconds(DespawnTime);
-        targetPosition = targetPosition - (transform.rotation * Vector3.up * 1.5f *StartOffset);
+        targetPosition = targetPosition - (transform.rotation * Vector3.up * 1.5f * StartOffset);
         Destroy(gameObject, smoothTime + 0.01f);
     }
 
