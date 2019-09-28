@@ -28,6 +28,15 @@ public class PlayerMovement : MonoBehaviour {
 			jump = true;
 		}
 		
+		if (Input.GetButtonUp("Fire1"))
+		{
+			anim.SetBool("isDoedel", false) ;
+		}
+		if (Input.GetButtonDown("Fire1"))
+		{
+			anim.SetBool("isDoedel", true) ;
+		}
+		
 		// anims
 		if (horizontalMove > -0.01 && horizontalMove < 0.01)
 		{
@@ -36,8 +45,9 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else
 		{
-			anim.SetBool("isIdle", false) ;
-			anim.SetBool("isRunning", true) ;
+			anim.SetBool("isIdle", false);
+			anim.SetBool("isRunning", true);
+			anim.SetBool("isDoedel", false);
 		}
 
 //		if (Input.GetButtonDown("Crouch"))
