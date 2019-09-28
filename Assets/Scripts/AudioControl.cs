@@ -1,4 +1,5 @@
-﻿ using Hellmade.Sound;
+﻿ using System.Linq;
+ using Hellmade.Sound;
  using UnityEngine;
  
 public class AudioControl : MonoBehaviour
@@ -81,6 +82,18 @@ public class AudioControl : MonoBehaviour
     public int PlayMusic(AudioClip clip, float volume = 0, bool loop = true, bool persist = true)
     {
         return EazySoundManager.PlayMusic(clip, volume, loop, persist);
+    }
+
+    public int PlayRandomSound(string key, float volume = 0, Transform sourceTransform = null)
+    {
+        var clips = SoundClips.Where(kvp => kvp.Key.StartsWith(key)).Select(kvp => (AudioClip) kvp.Value).ToList();
+        if (clips.Any())
+        {
+            var clip = clips[Random.Range(0, clips.Count)];
+            return PlaySound(clip, volume, sourceTransform);
+        }
+
+        return -1;
     }
  
     public int PlaySound(string key, float volume = 0, Transform sourceTransform = null)

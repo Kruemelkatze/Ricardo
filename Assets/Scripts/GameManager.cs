@@ -1,22 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-	public int score;
+	public static int Score;
 
 	public int scorePerBombedPhoto = 100;
-	public List<Texture2D> bombedPhotos; 
+	public List<Texture2D> bombedPhotos;
+
+	public TextMeshProUGUI scoreText;
 	
 	// Use this for initialization
 	void Start () {
 		Hub.Register(this);
+		Score = 0;
+		AudioControl.Instance.PlayDefaultMusic(0.3f);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		scoreText.text = Score.ToString();
 	}
 
 	public void TookPhoto(Phone phone, Texture2D photo, bool isOnPhoto, bool isDoedelOnPhoto, float relativeHeight)
@@ -28,9 +33,9 @@ public class GameManager : MonoBehaviour
 
 			var isDoedel = isDoedelOnPhoto && Hub.Get<PlayerMovement>().IsDoedel();
 
-			addScore += isDoedel ? 2 : 1;
+			addScore *= isDoedel ? 2 : 1;
 			
-			score += (int) addScore;
+			Score += (int) addScore;
 		}
 		
 		Hub.Get<PhoneSpawner>().RemovePhone(phone);
