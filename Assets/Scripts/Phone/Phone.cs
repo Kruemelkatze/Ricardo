@@ -165,12 +165,11 @@ public class Phone : MonoBehaviour
         );
     }
 
-    public void SetColor(Color color)
+    public void SetVariant(PhoneVariant variant)
     {
-        if (coloredSprite != null)
-        {
-            coloredSprite.color = color;
-        }
+        coloredSprite.sprite = variant.phone;
+        handBack.sprite = variant.hand;
+        handFront.sprite = variant.fingers;
     }
 
     public void Despawn()
