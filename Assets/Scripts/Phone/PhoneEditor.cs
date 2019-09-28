@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if (UNITY_EDITOR)
 
 [CustomEditor(typeof(Phone))]
 public class PhoneEditor : Editor
@@ -24,3 +25,5 @@ public class PhoneEditor : Editor
         }
     }
 }
+
+#endif
