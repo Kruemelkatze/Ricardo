@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         timeleft = totalTime;
         gameOver = false;
 
-        AudioControl.Instance.PlayDefaultMusic(0.3f);
+        //AudioControl.Instance.PlayDefaultMusic(0.3f);
     }
 
     // Update is called once per frame
@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
             addScore *= isDoedel ? 2 : 1;
 
             Score += (int) addScore;
+
+            if (isDoedel)
+            {
+                AudioControl.Instance.PlayRandomSound("score", 1.2f);
+            }
         }
 
         Hub.Get<PhoneSpawner>().RemovePhone(phone);

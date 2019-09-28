@@ -56,13 +56,13 @@ public class AudioControl : MonoBehaviour
     }
  
     // Default theme helper
-    public void PlayDefaultMusic(float volume = 0, bool loop = true, bool persist = true)
+    public void PlayDefaultMusic(float volume= 1, bool loop = true, bool persist = true)
     {
         PlayMusic(DefaultMusic, volume, loop, persist);
     }
  
     // Basically wrappers for EazySoundManager's method, which fetch the AudioClip from the Dictionary
-    public int PlayMusic(string key, float volume = 0, bool loop = true, bool persist = true)
+    public int PlayMusic(string key, float volume= 1, bool loop = true, bool persist = true)
     {
         if (IgnoreDuplicateMusic && _currentMusic == key)
             return _currentMusicId;
@@ -79,12 +79,12 @@ public class AudioControl : MonoBehaviour
         return -1;
     }
  
-    public int PlayMusic(AudioClip clip, float volume = 0, bool loop = true, bool persist = true)
+    public int PlayMusic(AudioClip clip, float volume= 1, bool loop = true, bool persist = true)
     {
         return EazySoundManager.PlayMusic(clip, volume, loop, persist);
     }
 
-    public int PlayRandomSound(string key, float volume = 0, Transform sourceTransform = null)
+    public int PlayRandomSound(string key, float volume= 1, Transform sourceTransform = null)
     {
         var clips = SoundClips.Where(kvp => kvp.Key.StartsWith(key)).Select(kvp => (AudioClip) kvp.Value).ToList();
         if (clips.Any())
@@ -96,7 +96,7 @@ public class AudioControl : MonoBehaviour
         return -1;
     }
  
-    public int PlaySound(string key, float volume = 0, Transform sourceTransform = null)
+    public int PlaySound(string key, float volume= 1, Transform sourceTransform = null)
     {
         Object clip;
         var found = SoundClips.TryGetValue(key, out clip);
@@ -108,7 +108,7 @@ public class AudioControl : MonoBehaviour
         return -1;
     }
  
-    public int PlaySound(AudioClip clip, float volume = 0, Transform sourceTransform = null)
+    public int PlaySound(AudioClip clip, float volume= 1, Transform sourceTransform = null)
     {
         return EazySoundManager.PlaySound(clip, volume, false, sourceTransform);
     }

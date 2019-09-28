@@ -169,6 +169,7 @@ public class Phone : MonoBehaviour
         photoShot = true;
 
         flash.Play();
+        AudioControl.Instance.PlayRandomSound("phone");
 
         var textureSnapShot = _screen.CreateSnapshot();
         var gm = Hub.Get<GameManager>();

@@ -27,11 +27,13 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
+			AudioControl.Instance.PlayRandomSound("jump");
 		}
 		
 		if (Input.GetButtonDown("Fire1"))
 		{
 			anim.SetBool("isDoedel", true) ;
+			AudioControl.Instance.PlayRandomSound("doedel");
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
