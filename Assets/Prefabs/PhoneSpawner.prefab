@@ -57,7 +57,7 @@ MonoBehaviour:
   - phone: {fileID: 21300000, guid: 560271aff8916bb4896198d01db1b24a, type: 3}
     hand: {fileID: 21300000, guid: 70fb25b84ab3e6349a46c81646c74624, type: 3}
     fingers: {fileID: 21300000, guid: 2dc1b71ff10285542a6f186b745df110, type: 3}
-  averageSpawnTime: 5
+  averageSpawnTime: 3
   spawnTimeDeviation: 0.5
   maxPhones: 10
   minSpawnDistance: {x: 2, y: 3}
@@ -65,6 +65,7 @@ MonoBehaviour:
   triesForRandomPoint: 20
   randomZ: 1
   phones: []
+  isSpawning: 1
 --- !u!114 &2035511134241804149
 MonoBehaviour:
   m_ObjectHideFlags: 0

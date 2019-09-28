@@ -28,15 +28,27 @@ public class PhoneSpawner : MonoBehaviour
 
     public List<Phone> phones = new List<Phone>();
 
+    public bool isSpawning = true;
+
     // Start is called before the first frame update
     void Start()
     {
         Hub.Register(this);
+        StartCoroutine(StartSpawner());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator StartSpawner()
     {
+        while (true)
+        {
+            var waitTime = averageSpawnTime + Random.Range(0, spawnTimeDeviation);
+            yield return new WaitForSeconds(waitTime);
+
+            if (isSpawning)
+            {
+                SpawnPhone();
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -111,6 +123,11 @@ public class PhoneSpawner : MonoBehaviour
 
     public void SpawnPhone()
     {
+        if (phones.Count >= maxPhones)
+        {
+            return;
+        }
+        
         var point = GetSpawnPoint();
         point.z = randomZ ? Random.Range(-0.05f, 0) : 0;
         var phone = Instantiate(phonePrefab, point, Quaternion.identity, transform);
