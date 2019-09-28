@@ -20,12 +20,12 @@ public class CharacterController2D : MonoBehaviour
 	private Vector3 velocity = Vector3.zero;
 	private int jumpCount = 0;
 	private bool doResetJump = false;
+
 	
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 	}
-
 
 	private void FixedUpdate()
 	{
@@ -36,6 +36,7 @@ public class CharacterController2D : MonoBehaviour
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
 		for (int i = 0; i < colliders.Length; i++)
 		{
+			
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;

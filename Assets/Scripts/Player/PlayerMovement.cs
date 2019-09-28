@@ -29,13 +29,13 @@ public class PlayerMovement : MonoBehaviour {
 			jump = true;
 		}
 		
-		if (Input.GetButtonUp("Fire1"))
-		{
-			anim.SetBool("isDoedel", false) ;
-		}
 		if (Input.GetButtonDown("Fire1"))
 		{
 			anim.SetBool("isDoedel", true) ;
+		}
+		else if (Input.GetButtonUp("Fire1"))
+		{
+			anim.SetBool("isDoedel", false) ;
 		}
 		
 		// anims
@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			anim.SetBool("isIdle", false);
 			anim.SetBool("isRunning", true);
-			anim.SetBool("isDoedel", false);
 		}
 
 //		if (Input.GetButtonDown("Crouch"))
