@@ -50,8 +50,10 @@ MonoBehaviour:
   SoundClips:
     values: []
   MusicClips:
-    values: []
-  DefaultMusic: 
+    values:
+    - name: fichtl
+      value: {fileID: 8300000, guid: ba8af75777913eb4dac9ec0d89b774ae, type: 3}
+  DefaultMusic: fichtl
   IgnoreDuplicateMusic: 1
 --- !u!114 &5273343208855491126
 MonoBehaviour:
@@ -89,6 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b52db7a7c65e547ba895c144fe5774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePerBombedPhoto: 100
+  bombedPhotos: []
+  scoreText: {fileID: 0}
+  timeText: {fileID: 0}
+  totalTime: 180
+  timeleft: 0
 --- !u!1 &5273343210349215714
 GameObject:
   m_ObjectHideFlags: 0
