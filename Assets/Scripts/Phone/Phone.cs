@@ -12,6 +12,9 @@ public class Phone : MonoBehaviour
     public SpriteRenderer indicator;
     public Animation flash;
 
+    private Renderer[] _renderers;
+    public int phoneNumber;
+    
     private Collider2D _ricardoTrigger;
 
     public Vector3 targetPosition;
@@ -39,6 +42,11 @@ public class Phone : MonoBehaviour
     {
         _ricardoTrigger = GetComponent<Collider2D>();
         _screen = GetComponentInChildren<Screen>();
+        var screenRenderer = _screen.GetComponent<Renderer>();
+        var flashRenderer = flash.GetComponent<Renderer>();
+
+        _renderers = new[] {handBack, coloredSprite, screenRenderer, flashRenderer, indicator, handFront};
+        SetOrderingLayers();
 
         var camBounds = GetCameraBounds();
         // Get nearest edge of targetPosition
@@ -201,6 +209,16 @@ public class Phone : MonoBehaviour
         coloredSprite.sprite = variant.phone;
         handBack.sprite = variant.hand;
         handFront.sprite = variant.fingers;
+    }
+
+    public void SetOrderingLayers()
+    {
+        foreach (var r in _renderers)
+        {
+            r.sortingOrder += phoneNumber * _renderers.Length;
+        }
+
+        _screen.orderInLayer += phoneNumber * _renderers.Length;
     }
 
     public void Despawn()

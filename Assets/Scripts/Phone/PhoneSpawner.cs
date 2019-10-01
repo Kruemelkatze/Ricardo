@@ -30,6 +30,8 @@ public class PhoneSpawner : MonoBehaviour
 
     public bool isSpawning = true;
 
+    public int OrderingLayerPhoneCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,10 +144,12 @@ public class PhoneSpawner : MonoBehaviour
             var variant = variants[Random.Range(0, variants.Length)];
             phoneScript.SetVariant(variant);
         }
-
+        
 
         Debug.Log("Spawned phone at position " + point);
         //Other stuff to do with phones
+        
+        phoneScript.phoneNumber = OrderingLayerPhoneCount++;
     }
 
     public void RemoveAllPhones()

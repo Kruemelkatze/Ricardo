@@ -63,9 +63,10 @@ MonoBehaviour:
   minSpawnDistance: {x: 2, y: 3}
   minSpawnDistanceBorder: 2
   triesForRandomPoint: 20
-  randomZ: 1
+  randomZ: 0
   phones: []
   isSpawning: 1
+  OrderingLayerPhoneCount: 0
 --- !u!114 &2035511134241804149
 MonoBehaviour:
   m_ObjectHideFlags: 0

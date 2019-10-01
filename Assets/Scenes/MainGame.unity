@@ -527,6 +527,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2035511134241804147, guid: d88d705abb6ab2141923ef7f07d7d225,
+        type: 3}
+      propertyPath: randomZ
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88d705abb6ab2141923ef7f07d7d225, type: 3}
 --- !u!1001 &3885138076926681081
@@ -794,14 +799,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1884044879, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
-      propertyPath: CameraTransform
-      value: 
-      objectReference: {fileID: 370647076}
-    - target: {fileID: 914644081, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
-      propertyPath: CameraTransform
-      value: 
-      objectReference: {fileID: 370647076}
     - target: {fileID: 141822706, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
       propertyPath: CameraTransform
       value: 
@@ -810,15 +807,23 @@ PrefabInstance:
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 370647076}
-    - target: {fileID: 1645376283, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
-      propertyPath: CameraTransform
-      value: 
-      objectReference: {fileID: 370647076}
     - target: {fileID: 728600747, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 370647076}
+    - target: {fileID: 914644081, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 370647076}
     - target: {fileID: 1078256480, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 370647076}
+    - target: {fileID: 1645376283, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 370647076}
+    - target: {fileID: 1884044879, guid: 94de3ccc73975d845a70e90933d37641, type: 3}
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 370647076}
