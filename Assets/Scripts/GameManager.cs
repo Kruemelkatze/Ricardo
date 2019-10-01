@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameOver = true;
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
             AudioControl.Instance.PlayRandomSound("towel");
         }
     }

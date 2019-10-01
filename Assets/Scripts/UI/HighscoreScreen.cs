@@ -28,7 +28,7 @@ public class HighscoreScreen : MonoBehaviour
     private void Start()
     {
         scoreText.text = GameManager.Score.ToString();
-        AudioControl.Instance.PlayRandomSound("gameover", 1.2f);
+        AudioControl.Instance.PlayRandomSound("gameover", 1.4f);
     }
 
     private void Update()
